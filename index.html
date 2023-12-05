@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nebula Noir</title>
+    <!-- Include Font Awesome from CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous">
+    <style>
+        @font-face {
+            font-family: 'Futura Medium Pt';
+            src: url('futura_medium_pt.ttf') format('truetype');
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column; /* Stack flex items vertically */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .header {
+            font-size: 60px;
+            letter-spacing: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px #000000;
+            font-family: 'Futura Medium Pt', Arial, sans-serif;
+            /* Position the header */
+            margin-bottom: 50px; /* Spacing between header and icons */
+        }
+
+        .icon {
+            color: #fff; /* Icon color */
+            margin: 10px; /* Spacing around icons */
+            font-size: 40px; /* Icon size */
+            transition: transform 0.3s, color 0.3s; /* Smooth transition for hover effect */
+            cursor: pointer; /* Change cursor on hover */
+            display: inline-block;
+        }
+
+        .icon:hover {
+            transform: scale(1.2); /* Scale icon on hover */
+            color: #E0E0E0; /* Lighten the icon color slightly on hover */
+        }
+
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        /* Tooltip container */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Tooltip text */
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            min-width: 160px; /* Adjusted width for the tooltip */
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0; /* Increased padding for better visual balance */
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -80px; /* Adjusted to half of min-width to center the tooltip */
+            font-family: 'Futura Medium Pt', Arial, sans-serif; /* Set the tooltip text to Futura */
+            font-size: 14px; /* Adjust the font size if needed */
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0px 2px 4px #000000; /* Optional: Adds a subtle shadow for depth */
+        }
+
+        /* Tooltip arrow */
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<video autoplay loop muted>
+    <source src="bg.webm" type="video/webm">
+    Your browser does not support the video tag.
+</video>
+
+<div class="header">NEBULA NOIR</div>
+
+<!-- Use Font Awesome icons for contact info -->
+    <div class="contact-info">
+        <a href="https://instagram.com/nebulanoir" target="_blank" class="icon"><i class="fab fa-instagram"></i></a>
+        <!-- Tooltip container -->
+        <div class="tooltip">
+            <a href="#" class="icon" onclick="copyEmail()"><i class="fas fa-envelope"></i></a>
+            <span class="tooltiptext" id="emailTooltip">info@nebulanoir.io</span>
+        </div>
+    </div>
+
+    <script>
+        function copyEmail() {
+            // Copy the email address to the clipboard
+            navigator.clipboard.writeText('info@nebulanoir.io').then(function() {
+                // Change the tooltip text
+                var tooltip = document.getElementById('emailTooltip');
+                tooltip.innerHTML = 'Email copied! <i class="fas fa-check"></i>';
+            }, function(err) {
+                // If the copy fails, handle it here
+                tooltip.innerHTML = 'Failed to copy';
+            });
+        }
+    </script>
+
+</body>
+</html>
